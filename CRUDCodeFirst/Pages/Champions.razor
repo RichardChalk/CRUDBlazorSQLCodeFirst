@@ -2,7 +2,7 @@
 
 @using CRUDCodeFirst.Data
 @using CRUDCodeFirst.Services
-@inherits OwningComponentBase<ChampionServices>
+@inject IChampionServices _ChampionService
 
 <h3>CRUD</h3>
 
@@ -36,23 +36,29 @@
     </tr>
     @foreach (var champ in displayChampions)
     {
-<tr>
-    <td>@champ.ChampionId</td>
-    <td>@champ.Name</td>
-    <td>@champ.Class</td>
-    <td>@champ.DamageType</td>
-    <td>@champ.StartingAttackDamage</td>
-</tr>
+    <tr>
+        <td>@champ.ChampionId</td>
+        <td>@champ.Name</td>
+        <td>@champ.Class</td>
+        <td>@champ.DamageType</td>
+        <td>@champ.StartingAttackDamage</td>
+    </tr>
     }
 </table>
 
 
 @code {
     List<Champion> displayChampions;
+    bool popup = false;
 
-        protected override void OnInitialized()
-        {
-            displayChampions = Service.GetChampions();
-        }
+    protected override void OnInitialized()
+    {
+        displayChampions = _ChampionService.GetChampions();
+    }
+
+    void ShowPopup()
+    {
+        popup = true;
+    }
 
 }
