@@ -4,18 +4,18 @@ namespace CRUDCodeFirst.Data
 {
     public enum ChampionClass
     {
-        Mage,
-        ADC,
-        Assassin,
-        Tank,
-        Bruiser
+        Mage = 1,
+        ADC = 2,
+        Assassin = 3,
+        Tank = 4,
+        Bruiser = 5
     }
 
     public enum DamageType
     {
-        AD,
-        AP,
-        Mixed
+        AD = 1,
+        AP = 2,
+        Mixed = 3
     }
     public class Champion
     {
