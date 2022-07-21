@@ -61,4 +61,15 @@ a, .btn-link {
 
     .blazor-error-boundary::after {
         content: "An error has occurred."
-    }
+}
+
+/* My CSS */
+.mySelect{
+    width:45%!important;
+}
+
+.mySelects {
+    display:flex;
+    justify-content: space-between;
+
+}
