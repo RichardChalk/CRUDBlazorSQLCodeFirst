@@ -6,7 +6,7 @@
 
 <h3>CRUD</h3>
 
-<button class="btn btn-primary" @onclick="AddChampion">Add new Champion</button>
+<button class="btn btn-primary" @onclick="ShowPopup">Add new Champion</button>
 
 @if (popup)
 {
@@ -54,13 +54,14 @@
 @code {
     List<Champion> displayChampions;
     bool popup = false;
+    Champion newChamp = new Champion();
 
     protected override void OnInitialized()
     {
         displayChampions = _ChampionService.GetChampions();
     }
 
-    void AddChampion()
+    void ShowPopup()
     {
         popup = true;
     }
@@ -68,6 +69,15 @@
     void ClosePopup()
     {
         popup = false;
+    }
+
+    void AddChampion()
+    {
+        newChamp.ChampionId = 0;
+        _ChampionService.AddChampion(newChamp);
+
+        // Run this again in order to show newly added champion
+        displayChampions = _ChampionService.GetChampions();
     }
 
 }
