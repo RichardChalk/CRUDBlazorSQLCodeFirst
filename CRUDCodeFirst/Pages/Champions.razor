@@ -2,7 +2,7 @@
 
 @using CRUDCodeFirst.Data
 @using CRUDCodeFirst.Services
-@inject IChampionServices _ChampionService
+@inject IChampionServices _championService
 
 <h3>CRUD</h3>
 
@@ -17,9 +17,36 @@
                     <h5 class="modal-title">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick="ClosePopup"></button>
                 </div>
-                <div class="modal-body">
-                    <p>Modal body text goes here.</p>
-                </div>
+
+                <EditForm Model="newChamp" OnInvalidSubmit="AddChampion">
+                    <div class="modal-body">
+                        <table border="1">
+                            <tr>
+                                <td><input type="text" placeholder="Champion name here..." @bind="newChamp.Name" /></td>
+                            </tr>
+                            <tr>
+                                <select @bind="newChamp.Class">
+                                    <option value="">Select a class</option>
+                                    <option value="1">Mage</option>
+                                    <option value="2">ADC</option>
+                                    <option value="3">Assassin</option>
+                                    <option value="4">Tank</option>
+                                    <option value="5">Bruiser</option>
+                                </select>
+                            </tr>
+                            <tr>
+                                <select @bind="newChamp.StartingAttackDamage">
+                                    <option value="">Select a damage type</option>
+                                    <option value="1">AD</option>
+                                    <option value="2">AP</option>
+                                    <option value="3">Mixed</option>
+                                </select>
+                            </tr>
+                        </table>
+                    </div>
+                </EditForm>
+
+               
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="ClosePopup">Close</button>
                     <button type="button" class="btn btn-primary" @onclick="ClosePopup">Save changes</button>
@@ -58,7 +85,7 @@
 
     protected override void OnInitialized()
     {
-        displayChampions = _ChampionService.GetChampions();
+        displayChampions = _championService.GetChampions();
     }
 
     void ShowPopup()
@@ -74,10 +101,10 @@
     void AddChampion()
     {
         newChamp.ChampionId = 0;
-        _ChampionService.AddChampion(newChamp);
+        _championService.AddChampion(newChamp);
 
         // Run this again in order to show newly added champion
-        displayChampions = _ChampionService.GetChampions();
+        displayChampions = _championService.GetChampions();
     }
 
 }
