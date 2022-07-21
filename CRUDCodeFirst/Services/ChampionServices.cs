@@ -2,7 +2,7 @@
 
 namespace CRUDCodeFirst.Services
 {
-    public class ChampionServices
+    public class ChampionServices : IChampionServices
     {
         public ApplicationDbContext _context { get; }
         public ChampionServices(ApplicationDbContext context)

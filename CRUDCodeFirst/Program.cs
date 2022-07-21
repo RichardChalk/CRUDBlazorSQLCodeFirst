@@ -1,4 +1,5 @@
 using CRUDCodeFirst.Data;
+using CRUDCodeFirst.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,9 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddDbContextPool<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
+
+// Injecting my service
+builder.Services.AddScoped<IChampionServices, ChampionServices>();
 
 
 var app = builder.Build();
