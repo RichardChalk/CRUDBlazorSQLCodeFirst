@@ -10,6 +10,18 @@ namespace CRUDCodeFirst.Services
             _context = context;
         }
 
+        public List<Champion> GetChampions()
+        {
+            return _context.Champions.ToList();
+        }
+
+        public bool AddChampion(Champion champion)
+        {
+            _context.Champions.Add(champion);
+            _context.SaveChanges();
+            return true;
+        }
+
        
     }
 }
