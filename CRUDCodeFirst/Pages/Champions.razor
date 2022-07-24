@@ -8,6 +8,7 @@
 
 <button class="btn btn-primary" @onclick="ShowPopup">Add new Champion</button>
 
+@*Popup ===========================================================*@
 @if (popup)
 {
     <div class="modal" tabindex="-1" style="display:block;">
@@ -18,7 +19,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick="ClosePopup"></button>
                 </div>
 
-                <EditForm Model="newChamp" OnInvalidSubmit="AddChampion">
+                <EditForm Model="newChamp" OnValidSubmit="AddChampion">
                     <div class="modal-body">
                         <input type="text" class="w-100 mt-3" placeholder="Champion name here..." @bind="newChamp.Name" /><br />
 
@@ -44,18 +45,18 @@
                         <input type="number" name="startingAD" class="w-100 mt-3" @bind="newChamp.StartingAttackDamage" /><br />
 
                     </div>
-                </EditForm>
 
-               
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="ClosePopup">Close</button>
-                    <button type="button" class="btn btn-primary" @onclick="ClosePopup">Save changes</button>
-                </div>
+                    <div class="modal-footer">
+                        @*<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="ClosePopup">Close</button>*@
+                        <button type="submit" class="btn btn-primary" @onclick="ClosePopup">Save changes</button>
+                    </div>
+                </EditForm>
             </div>
         </div>
     </div>
 }
 
+@*Table ================================================================*@
 
 <table class="table table-striped">
     <tr>

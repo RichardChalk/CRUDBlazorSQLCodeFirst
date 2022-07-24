@@ -29,6 +29,9 @@ namespace CRUDCodeFirst.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ChampionId"), 1L, 1);
 
+                    b.Property<bool>("BeginnerFriendly")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Class")
                         .HasColumnType("int");
 

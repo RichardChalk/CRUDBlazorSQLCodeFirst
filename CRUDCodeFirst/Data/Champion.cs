@@ -21,9 +21,20 @@ namespace CRUDCodeFirst.Data
     {
         [Key]
         public int ChampionId { get; set; }
+        
+        [Required]
+        [MinLength(3)]
         public string Name { get; set; }
+
+        [Required] 
         public ChampionClass Class { get; set; }
+
+        [Required]
+        [Range(50,110)]
         public int StartingAttackDamage { get; set; }
+
+        [Required]
         public DamageType DamageType { get; set; }
+
     }
 }
