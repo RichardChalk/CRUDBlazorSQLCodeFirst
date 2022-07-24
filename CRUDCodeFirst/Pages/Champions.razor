@@ -14,14 +14,14 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
+                    <h5 class="modal-title">Add Champion</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick="ClosePopup"></button>
                 </div>
 
                 <EditForm Model="newChamp" OnInvalidSubmit="AddChampion">
                     <div class="modal-body">
                         <input type="text" class="w-100 mt-3" placeholder="Champion name here..." @bind="newChamp.Name" /><br />
-                          
+
                         <div class="mySelects">
                             <select @bind="newChamp.Class" class="w-50 mt-3 mySelect">
                                 <option value="0">Select a class</option>
@@ -31,14 +31,18 @@
                                 <option value="4">Tank</option>
                                 <option value="5">Bruiser</option>
                             </select>
-                           
-                            <select @bind="newChamp.StartingAttackDamage" class="w-50 mt-3 mySelect">
+
+                            <select @bind="newChamp.DamageType" class="w-50 mt-3 mySelect">
                                 <option value="0">Select a damage type</option>
                                 <option value="1">AD</option>
                                 <option value="2">AP</option>
                                 <option value="3">Mixed</option>
                             </select>
-                         </div>
+                        </div>
+
+                        <label for="startingAD" class="mt-3">Starting attack damage?</label>
+                        <input type="number" name="startingAD" class="w-100 mt-3" @bind="newChamp.StartingAttackDamage" /><br />
+
                     </div>
                 </EditForm>
 
@@ -53,7 +57,7 @@
 }
 
 
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>Id</th>
         <th>Name</th>
