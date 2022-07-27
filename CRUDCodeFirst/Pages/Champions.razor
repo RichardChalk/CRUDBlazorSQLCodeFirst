@@ -79,7 +79,7 @@
             <td>@champ.Class</td>
             <td>@champ.DamageType</td>
             <td>@champ.StartingAttackDamage</td>
-            <td><button class="btn btn-info">Edit</button></td>
+            <td><button class="btn btn-info" @onclick="(()=>EditChampion(champ))">Edit</button></td>
             <td><button class="btn btn-danger">Delete</button></td>
         </tr>
         }
@@ -109,11 +109,26 @@
 
     void AddChampion()
     {
-        newChamp.ChampionId = 0;
-        _championService.AddChampion(newChamp);
+        var champUpdate = false;
+        if (newChamp.ChampionId>0)
+        {
+            champUpdate = _championService.UpdateChampion(newChamp);
+            popup = false;
+        }
+        else
+        {
+            newChamp.ChampionId = 0;
+            _championService.AddChampion(newChamp);
+        }
 
         // Run this again in order to show newly added champion
         displayChampions = _championService.GetChampions();
+    }
+
+    void EditChampion(Champion editChamp)
+    {
+        newChamp = editChamp;
+        popup = true;
     }
 
 }

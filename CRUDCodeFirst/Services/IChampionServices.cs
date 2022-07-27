@@ -9,6 +9,8 @@ namespace CRUDCodeFirst.Services
         public Champion GetChampionDetails(int id);
 
         public bool AddChampion(Champion champion);
-      
+        public bool UpdateChampion(Champion updateChamp);
+
+
     }
 }

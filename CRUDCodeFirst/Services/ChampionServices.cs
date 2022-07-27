@@ -27,5 +27,24 @@ namespace CRUDCodeFirst.Services
             //Champion editObj = new Champion();
             return _context.Champions.FirstOrDefault(c=>c.ChampionId == id);
         }
+
+        public bool UpdateChampion(Champion updateChamp)
+        {
+            var getChamp = _context.Champions.FirstOrDefault(c => c.ChampionId == updateChamp.ChampionId);
+            if (getChamp != null)
+            {
+                // Refactor - Automapper
+                getChamp.Name = updateChamp.Name;
+                getChamp.DamageType = updateChamp.DamageType;
+                getChamp.StartingAttackDamage = updateChamp.StartingAttackDamage;
+                getChamp.Class = updateChamp.Class;
+                _context.SaveChanges();
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
