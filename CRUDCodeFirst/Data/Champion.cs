@@ -23,7 +23,7 @@ namespace CRUDCodeFirst.Data
         public int ChampionId { get; set; }
         
         [Required]
-        [MinLength(3)]
+        [MinLength(3, ErrorMessage = "Name is too short.")]
         public string Name { get; set; } = string.Empty;
 
         [Required] 
