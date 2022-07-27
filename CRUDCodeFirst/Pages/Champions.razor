@@ -24,8 +24,23 @@
                         <input type="text" class="w-100 mt-3" placeholder="Champion name here..." @bind="newChamp.Name" /><br />
 
                         <div class="mySelects">
-                            <select @bind="newChamp.Class" class="w-50 mt-3 mySelect">
-                                <option value="0">Select a class</option>
+                            <InputSelect @bind-Value="newChamp.Class">
+                                @foreach (var c in Enum.GetValues(typeof(ChampionClass)))
+                                    {
+                                    <option value="@c">@c</option>
+                                    }
+                            </InputSelect>
+
+                            <InputSelect @bind-Value="newChamp.DamageType">
+                                @foreach (var c in Enum.GetValues(typeof(DamageType)))
+                                    {
+                                    <option value="@c">@c</option>
+                                    }
+                            </InputSelect>
+
+
+                            @*<select @bind="newChamp.Class" class="w-50 mt-3 mySelect">
+                                <option value="">Select a class</option>
                                 <option value="1">Mage</option>
                                 <option value="2">ADC</option>
                                 <option value="3">Assassin</option>
@@ -34,11 +49,11 @@
                             </select>
 
                             <select @bind="newChamp.DamageType" class="w-50 mt-3 mySelect">
-                                <option value="0">Select a damage type</option>
+                                <option value="">Select a damage type</option>
                                 <option value="1">AD</option>
                                 <option value="2">AP</option>
                                 <option value="3">Mixed</option>
-                            </select>
+                            </select>*@
                         </div>
 
                         <label for="startingAD" class="mt-3">Starting attack damage?</label>
