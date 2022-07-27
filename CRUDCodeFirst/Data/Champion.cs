@@ -24,7 +24,7 @@ namespace CRUDCodeFirst.Data
         
         [Required]
         [MinLength(3)]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [Required] 
         public ChampionClass Class { get; set; }

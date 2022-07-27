@@ -24,36 +24,21 @@
                         <input type="text" class="w-100 mt-3" placeholder="Champion name here..." @bind="newChamp.Name" /><br />
 
                         <div class="mySelects">
-                            <InputSelect @bind-Value="newChamp.Class">
+                            <InputSelect @bind-Value="newChamp.Class" class="w-50 mt-3 mySelect">
+                                <option value="">Select a class</option>
                                 @foreach (var c in Enum.GetValues(typeof(ChampionClass)))
                                     {
                                     <option value="@c">@c</option>
                                     }
                             </InputSelect>
 
-                            <InputSelect @bind-Value="newChamp.DamageType">
+                            <InputSelect @bind-Value="newChamp.DamageType" class="w-50 mt-3 mySelect">
+                                <option value="">Select a damage type</option>
                                 @foreach (var c in Enum.GetValues(typeof(DamageType)))
                                     {
                                     <option value="@c">@c</option>
                                     }
                             </InputSelect>
-
-
-                            @*<select @bind="newChamp.Class" class="w-50 mt-3 mySelect">
-                                <option value="">Select a class</option>
-                                <option value="1">Mage</option>
-                                <option value="2">ADC</option>
-                                <option value="3">Assassin</option>
-                                <option value="4">Tank</option>
-                                <option value="5">Bruiser</option>
-                            </select>
-
-                            <select @bind="newChamp.DamageType" class="w-50 mt-3 mySelect">
-                                <option value="">Select a damage type</option>
-                                <option value="1">AD</option>
-                                <option value="2">AP</option>
-                                <option value="3">Mixed</option>
-                            </select>*@
                         </div>
 
                         <label for="startingAD" class="mt-3">Starting attack damage?</label>
@@ -62,7 +47,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        @*<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="ClosePopup">Close</button>*@
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="ClosePopup">Close</button>
                         <button type="submit" class="btn btn-primary" @onclick="ClosePopup">Save changes</button>
                     </div>
                 </EditForm>
@@ -103,7 +88,7 @@
 
 
 @code {
-    List<Champion> displayChampions;
+    List<Champion> displayChampions = new List<Champion>();
     bool popup = false;
     Champion newChamp = new Champion();
 
