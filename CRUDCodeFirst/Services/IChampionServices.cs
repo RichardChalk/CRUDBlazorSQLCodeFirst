@@ -6,6 +6,7 @@ namespace CRUDCodeFirst.Services
     {
 
         public List<Champion> GetChampions();
+        public Champion GetChampionDetails(int id);
 
         public bool AddChampion(Champion champion);
       

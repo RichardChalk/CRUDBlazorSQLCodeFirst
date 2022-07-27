@@ -22,6 +22,10 @@ namespace CRUDCodeFirst.Services
             return true;
         }
 
-       
+        public Champion GetChampionDetails(int id)
+        {
+            //Champion editObj = new Champion();
+            return _context.Champions.FirstOrDefault(c=>c.ChampionId == id);
+        }
     }
 }
