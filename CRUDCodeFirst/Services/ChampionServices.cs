@@ -46,5 +46,20 @@ namespace CRUDCodeFirst.Services
             }
             return true;
         }
+
+        public bool DeleteChampion(Champion deleteChamp)
+        {
+            var getChamp = _context.Champions.FirstOrDefault(c => c.ChampionId == deleteChamp.ChampionId);
+            if (getChamp != null)
+            {
+                _context.Remove(getChamp);
+                _context.SaveChanges();
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

@@ -80,7 +80,7 @@
             <td>@champ.DamageType</td>
             <td>@champ.StartingAttackDamage</td>
             <td><button class="btn btn-info" @onclick="(()=>EditChampion(champ))">Edit</button></td>
-            <td><button class="btn btn-danger">Delete</button></td>
+            <td><button class="btn btn-danger" @onclick="(()=>DeleteChampion(champ))">Delete</button></td>
         </tr>
         }
     </tbody>
@@ -129,6 +129,14 @@
     {
         newChamp = editChamp;
         popup = true;
+    }
+
+    void DeleteChampion(Champion deleteChamp)
+    {
+        _championService.DeleteChampion(deleteChamp);
+        displayChampions.Clear();
+        displayChampions = _championService.GetChampions();
+
     }
 
 }

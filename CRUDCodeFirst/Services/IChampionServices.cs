@@ -10,6 +10,7 @@ namespace CRUDCodeFirst.Services
 
         public bool AddChampion(Champion champion);
         public bool UpdateChampion(Champion updateChamp);
+        public bool DeleteChampion(Champion updateChamp);
 
 
     }
